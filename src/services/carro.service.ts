@@ -5,4 +5,8 @@ const getCarros=async()=>{
     const carros=await CarroModel.find({});
     return carros;
 }
-export {getCarros};
+const insertarCarro=async(carro:Carro)=>{
+    const nuevoCarro=await CarroModel.create(carro);
+    return nuevoCarro;
+}
+export {getCarros,insertarCarro};

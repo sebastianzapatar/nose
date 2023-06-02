@@ -1,6 +1,6 @@
 import { Request,Response } from "express";
 import { Carro } from "../models/Carro.interface";
-import { getCarros } from "../services/carro.service";
+import { getCarros,insertarCarro } from "../services/carro.service";
 const getCarrosC=async(req:Request,res:Response)=>{
     try{
         const response=await getCarros();
@@ -11,11 +11,17 @@ const getCarrosC=async(req:Request,res:Response)=>{
     }
     
 }
-const guardarCarros=(req:Request,res:Response)=>{
-    console.log(req);
-    const nuevoCarro:Carro=req.body;
+const guardarCarros=async(req:Request,res:Response)=>{
     
-    res.send();
+    try{
+        const nuevoCarro:Carro=req.body;
+        const response=await insertarCarro(nuevoCarro);
+        res.status(201).send(response);
+    }
+    catch(e){
+        console.log(e);
+    }   
+    
     
 }
 export {getCarrosC,guardarCarros};
