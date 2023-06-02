@@ -1,8 +1,8 @@
 import { Router} from "express";
-import { getCarros, guardarCarros } from "../controllers/carros.controller";
+import { getCarrosC, guardarCarros } from "../controllers/carros.controller";
 const router=Router();
 
-router.get('/',getCarros)
+router.get('/',getCarrosC)
 router.post('/',guardarCarros);
 // exportar la ruta
 export {router};

@@ -9,5 +9,6 @@ app.use(cors());
 app.use(express.json());
 app.use(router);
 dbConnect().then(()=>console.log('Se conecto a la BD'))
+.catch(()=>console.log("No se pudo conectar"))
 app.listen(PORT,
     ()=>console.log('Corriendo en localhost'+PORT));

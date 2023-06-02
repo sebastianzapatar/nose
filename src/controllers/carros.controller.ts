@@ -1,33 +1,21 @@
 import { Request,Response } from "express";
 import { Carro } from "../models/Carro.interface";
-
-let carros:Carro[]=[{
-    id:1,
-    marca:'Ford',
-    modelo:'Raport',
-    ano:2023
-    },
-    {
-        id:2,
-        marca:'BMW',
-        modelo:'X5',
-        ano:2020
-    },
-    {
-        id:3,
-        marca:'Audi',
-        modelo:'Q4',
-        ano:2023
+import { getCarros } from "../services/carro.service";
+const getCarrosC=async(req:Request,res:Response)=>{
+    try{
+        const response=await getCarros();
+        res.status(200).send(response);
     }
-]
-const getCarros=(req:Request,res:Response)=>{
-    res.send(carros);
+    catch(e){
+        console.log(e);
+    }
+    
 }
 const guardarCarros=(req:Request,res:Response)=>{
     console.log(req);
     const nuevoCarro:Carro=req.body;
-    carros.push(nuevoCarro);
-    res.send(carros);
+    
+    res.send();
     
 }
-export {getCarros,guardarCarros};
+export {getCarrosC,guardarCarros};
