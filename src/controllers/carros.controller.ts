@@ -1,7 +1,7 @@
 import { Request,Response } from "express";
 import { Carro } from "../models/Carro.interface";
 
-const carros:Carro[]=[{
+let carros:Carro[]=[{
     id:1,
     marca:'Ford',
     modelo:'Raport',
@@ -23,4 +23,11 @@ const carros:Carro[]=[{
 const getCarros=(req:Request,res:Response)=>{
     res.send(carros);
 }
-export {getCarros};
+const guardarCarros=(req:Request,res:Response)=>{
+    console.log(req);
+    const nuevoCarro:Carro=req.body;
+    carros.push(nuevoCarro);
+    res.send(carros);
+    
+}
+export {getCarros,guardarCarros};
