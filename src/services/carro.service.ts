@@ -9,4 +9,25 @@ const insertarCarro=async(carro:Carro)=>{
     const nuevoCarro=await CarroModel.create(carro);
     return nuevoCarro;
 }
-export {getCarros,insertarCarro};
+const getCarro=async(_id:string)=>{
+    const carro=await CarroModel.find({_id:_id});
+    console.log(carro);
+    return carro;
+}
+const buscar=async(parametro:string)=>{
+    const carros=await CarroModel.find({$or:[{marca:parametro},
+    {modelo:parametro}]});
+    return carros;
+
+}
+const findbyYear=async(year:number)=>{
+    const carros=await CarroModel.find({ano:
+        {$gte:year}});
+    return carros;
+}
+const deleteCarro=async(_id:string)=>{
+    const borrado=await CarroModel.deleteOne({_id:_id});
+    return borrado;
+}
+export {getCarros,insertarCarro,
+    getCarro,buscar,findbyYear,deleteCarro};
