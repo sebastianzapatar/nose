@@ -1,7 +1,7 @@
 import { Request,Response } from "express";
 import { Carro } from "../models/Carro.interface";
 import { getCarros,insertarCarro,getCarro,buscar,
-        findbyYear, deleteCarro } 
+        findbyYear, deleteCarro,actualizarCarro } 
 from "../services/carro.service";
 
 const getCarroC=async(req:Request,res:Response)=>{
@@ -85,5 +85,16 @@ const deleteById=async(req:Request,res:Response)=>{
         
     }
 }
+const updateCar=async(req:Request,res:Response)=>{
+    try{
+        const id=req.params.id;
+        const nuevoCarro:Carro=req.body;
+        const response=await actualizarCarro(id,nuevoCarro);
+        res.status(202).send(response);
+    }
+    catch(e){
+        console.log(e);
+    }
+}
 export {getCarrosC,guardarCarros,
-    getCarroC,getCarrosB,getByYear,deleteById};
+    getCarroC,getCarrosB,getByYear,deleteById,updateCar};

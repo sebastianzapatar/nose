@@ -29,5 +29,9 @@ const deleteCarro=async(_id:string)=>{
     const borrado=await CarroModel.deleteOne({_id:_id});
     return borrado;
 }
+const actualizarCarro=async(_id:string,data:Carro)=>{
+    const actualizado=await CarroModel.updateOne({_id:_id},data);
+    return actualizado;
+}
 export {getCarros,insertarCarro,
-    getCarro,buscar,findbyYear,deleteCarro};
+    getCarro,buscar,findbyYear,deleteCarro,actualizarCarro};
