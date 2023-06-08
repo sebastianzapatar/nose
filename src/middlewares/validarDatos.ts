@@ -1,10 +1,19 @@
 import { NextFunction,Request,Response } from "express";
-import { check } from "express-validator";
+import { body, validationResult } from "express-validator";
 
-const validarDatosCarro=(req:Request,res:Response,
-    next:NextFunction)=>{
+const validarDatosUsuario=[
+    body('name').isEmail(),
+    body('password').isLength({ min: 8 }),
+    body('rol').isLength({ min: 4 }),
+    (req:Request,res:Response,next:NextFunction)=>{
+        const result = validationResult(req);
+        if(result.array().length===0){
+            next();
+            return;
+        }
+        console.log(result.array().length);
         
-        
-        
-}
-export {validarDatosCarro};
+        res.send({ errors: result.array() });
+    }
+]
+export {validarDatosUsuario};

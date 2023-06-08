@@ -1,5 +1,5 @@
 import { Router,Request,Response } from "express";
-
+import { insertarJuego } from "../controllers/juegos.controller";
 const router=Router();
 /*
 get obtener datos
@@ -10,8 +10,6 @@ patch editar parcialmente un registro
 */
 //La dirección del proyecto donde apunta
 // tiene una función, viene de los controladores
-router.get('/',(req:Request,res:Response)=>{
-    res.send({message:"Hola soy un aguacate"});
-})
+router.post('/',insertarJuego);
 // exportar la ruta
 export {router};
