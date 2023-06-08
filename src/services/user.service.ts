@@ -12,4 +12,15 @@ const registrarUsuario=async(user:User)=>{
     ({name,password:passwordHash,rol});
     return newUser;
 }
-export {registrarUsuario};
+const loginUsuario=async(user:User)=>{
+    const {name,password}=user;
+    const userExist=await UserModel.findOne({name:name});
+    if(!userExist){
+        return 'User not exist';
+    }
+    const passwordHash=userExist.password;
+    const isMatch=await verify(password,passwordHash);
+    if(isMatch) return userExist;
+    else return 'Usuario o password incorrectos';
+}
+export {registrarUsuario,loginUsuario};
