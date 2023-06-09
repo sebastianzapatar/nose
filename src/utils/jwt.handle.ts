@@ -13,4 +13,7 @@ const VerifyToken=(jwt:string)=>{
     return isOk;
     
 }
-export {singToken,VerifyToken};
+const obtenerUsuario=(jwt:string)=>{
+
+}
+export {singToken,VerifyToken,obtenerUsuario};
