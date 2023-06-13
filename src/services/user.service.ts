@@ -24,7 +24,7 @@ const loginUsuario=async(user:User)=>{
     if(!isMatch){
         return 'Usuario o password incorrectos';
     }
-    const token= await singToken(name);
+    const token= await singToken(name,userExist.rol);
     const data={token:token,
     user:{
         name:name,
