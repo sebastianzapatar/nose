@@ -1,14 +1,18 @@
 import {NextFunction, Request, Response} from 'express';
 import {VerifyToken} from '../utils/jwt.handle';
-
-const checkJWT=(req:Request,res:Response,next:NextFunction)=>{
+import { User } from "../models/User.interface";
+import UserModel from "../models/User.model";
+const checkJWT=async (req:Request,res:Response,next:NextFunction)=>{
     
     try{
         const jwtByUser=req.headers.authorization||'';
     console.log(jwtByUser);
     const jwt=jwtByUser.split(' ')[1];
     const isOk=VerifyToken(jwt);
+    console.log(isOk);
+    
     if(isOk){
+        
         next();
         return
     }

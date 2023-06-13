@@ -1,12 +1,13 @@
-const mongoose = require('mongoose');
+import {model,Schema} from 'mongoose';
+import { Juego } from './Juego.interface';
 
-const gameSchema = new mongoose.Schema({
+const gameSchema = new Schema<Juego>({
   name: {
     type: String,
     required: true
   },
   speedrun: {
-    type: Number
+    type: String
   },
   releasedate: {
     type: Date,
@@ -22,6 +23,6 @@ const gameSchema = new mongoose.Schema({
   }
 });
 
-const Game = mongoose.model('Game', gameSchema);
+const Game = model('Game', gameSchema);
 
-module.exports = Game;
+export default Game;

@@ -1,5 +1,5 @@
 import "dotenv"
-import { sign,verify } from "jsonwebtoken";
+import { sign,verify,JwtPayload } from "jsonwebtoken";
 const JWT_SECRET=process.env.JWT_SECRET||"lafrase";
 const singToken=async(id:string)=>{
     const jwt=sign({id},JWT_SECRET,{
@@ -10,6 +10,7 @@ const singToken=async(id:string)=>{
 }
 const VerifyToken=(jwt:string)=>{
     const isOk= verify(jwt,JWT_SECRET);
+    console.log(isOk);
     return isOk;
     
 }
