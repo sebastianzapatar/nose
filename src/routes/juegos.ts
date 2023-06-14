@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { verJuegos,insertarJuego, borrarJuego, actualizarJuego } 
 from "../controllers/juegos.controller";
-import { checkJWT,checkIsAdmin} from "../middlewares/checkJWT";
+import { checkIsAdmin} from "../middlewares/checkJWT";
 const router=Router();
 /*
 get obtener datos
