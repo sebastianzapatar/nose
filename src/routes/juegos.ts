@@ -12,7 +12,23 @@ patch editar parcialmente un registro
 */
 //La dirección del proyecto donde apunta
 // tiene una función, viene de los controladores
-router.get('/',checkJWT,verJuegos);
+
+/**
+ * @swagger
+ * /juegos  :
+ *  get:
+ *    summary: Returns a list of games
+ *    tags: [games]
+ *    responses:
+ *      200:
+ *        description: the list of games
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: array
+ *              
+ */
+router.get('/',verJuegos);
 router.post('/',[checkIsAdmin],insertarJuego);
 router.delete('/:id',borrarJuego);//segundon o admin
 router.put('/:id',actualizarJuego);//segundon

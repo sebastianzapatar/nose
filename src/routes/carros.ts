@@ -7,6 +7,22 @@ import { primerMiddleware, validarAnno, validarAnnoMayor } from "../middlewares/
 import { validarDatos } from "../middlewares/CarrosValidation";
 import { checkJWT } from "../middlewares/checkJWT";
 const router=Router();
+
+/**
+ * @swagger
+ * /Carros  :
+ *  get:
+ *    summary: Returns a list of cars
+ *    tags: [cars]
+ *    responses:
+ *      200:
+ *        description: the list of cars
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: array
+ *              
+ */
 router.get('/:id',getCarroC);
 router.get('/buscar/:parametro',getCarrosB);
 router.get('/buscarY/:parametro',
