@@ -11,6 +11,8 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(router);
+console.log("Prueba");
+
 const specs = swaggerJsDoc(options);
 app.use("/docs", swaggerUI.serve, swaggerUI.setup(specs));
 dbConnect().then(()=>console.log('Se conecto a la BD'))
